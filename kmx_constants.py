@@ -57,7 +57,7 @@ PRESETS = {
 # Die Hilfetexte nennen Zahlen des vorgerechneten Rasters (data/matrix_grid.json); tests/test_claims.py prüft jede davon.
 PRESET_HELP = {
     "Standardfall (Voreinstellung)": "Wahre Einheitsmatrix, 50 Kennzahlen, 30 Wochen: das größte |r| liegt in der Messreihe im Mittel bei 0,597; in 100,0 % der Datensätze ist mindestens ein Paar naiv „signifikant“, bei der Bonferroni-Schwelle in 5,2 %.",
-    "Fast so viele Kennzahlen wie Wochen": "Wahre Einheitsmatrix, 100 Kennzahlen, 111 Wochen (p/n = 0,9): der kleinste Eigenwert der Stichprobenmatrix ist im Mittel 0,003 und die Konditionszahl 1 220 (Formel: 1 442), statt 1.",
+    "Fast so viele Kennzahlen wie Wochen": "Wahre Einheitsmatrix, 100 Kennzahlen, 111 Wochen (p/n = 0,9): der kleinste Eigenwert der Stichprobenmatrix ist im Mittel 0,003 und die Konditionszahl im Mittel 1 220 bei starker Streuung (Formel für q = 0,9: 1 442), statt 1.",
     "Mehr Kennzahlen als Wochen": "Kette, 100 Kennzahlen, 60 Wochen: die Stichprobenmatrix hat höchstens den Rang 59 und den Fehler 12,88; lineare Schrumpfung 6,88, nichtlineare 6,97, Orakel 6,78.",
     "Ein gemeinsamer Faktor": "Ein Faktor, 50 Kennzahlen, 60 Wochen: Fehler Stichprobenmatrix 5,55, lineare Schrumpfung 5,44 (kaum besser), Abschneiden der Eigenwerte 2,81, nichtlineare Schrumpfung 3,14.",
     "Fünf Blöcke": "Fünf Blöcke, 50 Kennzahlen, 60 Wochen: Fehler Stichprobenmatrix 6,15, lineare Schrumpfung 5,41, Abschneiden 5,64, nichtlineare Schrumpfung 4,47, Orakel 4,18.",

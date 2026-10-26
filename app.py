@@ -56,7 +56,7 @@ st.markdown(
     """
 **Fünftes Stück der Korrelations-Reihe** und **die erste Demo des Portfolios mit dem Spektrum einer geschätzten Korrelationsmatrix**. **p Kennzahlen** eines Standorts, gemessen über **n Wochen**; die
 **wahre Korrelationsmatrix ist bekannt** (vier Formen). Die ersten Stücke betrachteten **ein** Paar. Hier sind es p(p − 1)/2 Paare zugleich, und wenn p nicht klein gegen n ist, ist die
-Stichprobenmatrix kein verkleinertes Abbild der Wahrheit: ihr größter Eintrag ist Zufall, ihre Eigenwerte sind verzerrt, sie ist schlecht konditioniert oder gar nicht invertierbar.
+Stichprobenmatrix kein verkleinertes Abbild der Wahrheit: ihr größter Eintrag ist bei unabhängigen Kennzahlen reiner Zufall, sonst Wahrheit plus Zufall, ihre Eigenwerte sind verzerrt, sie ist schlecht konditioniert oder gar nicht invertierbar.
 **Wie viel davon ist echt, und welcher Schätzer verbessert die Matrix wann?**
 
 Weiter unten: fünf Experimente (**🔬**), **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**. Eine Schrumpfung als Baustein des Prognoseabgleichs steht in `hierarchy-forecast-demo`,
@@ -73,7 +73,7 @@ Die **Stichprobenmatrix** R̂ ist die Korrelationsmatrix der n Wochen. Ihre **Ei
 | Schätzer | Idee | hilft bei | schadet bei |
 |---|---|---|---|
 | **Stichprobenmatrix** | die Korrelationen der n Wochen | n ≫ p | p ≈ n, p > n |
-| **lineare Schrumpfung** | R̂ mit der Einheitsmatrix mischen, Gewicht aus den Daten | Einheit, Kette | ein Faktor (kein Effekt) |
+| **lineare Schrumpfung** | R̂ mit der Einheitsmatrix mischen, Gewicht aus den Daten | Einheit, Kette | ein Faktor (kaum ein Effekt) |
 | **Eigenwerte abschneiden** | alle Eigenwerte unter dem Marchenko–Pastur-Rand durch ihr Mittel ersetzen | ein Faktor | Kette, kleine Strukturen |
 | **nichtlineare Schrumpfung** | jeden Eigenwert einzeln aus der Dichte aller Eigenwerte korrigieren | Kette, Blöcke, Faktor | Einheit (schlechter als die lineare) |
 | **Orakel** | Eigenwerte uᵀRu mit der WAHREN Matrix R | – (nur zum Vergleich, nicht berechenbar) | – |
@@ -155,7 +155,7 @@ if grid is not None:
     st.plotly_chart(build_noise_lines(grid["noise"], e1_n), width="stretch", key="noise_chart")
     kind, text = ev.verdict_noise(grid["noise"], e1_p, e1_n)
     getattr(st, kind)(text)
-    st.caption("Die naive Schwelle gilt für ein einzelnes Paar. Bei p(p − 1)/2 Paaren ist das Maximum fast immer darüber. Bonferroni und die Maximum-Schwelle (Quantil des größten |r| unter Unabhängigkeit) fallen hier zusammen.")
+    st.caption("Die naive Schwelle gilt für ein einzelnes Paar. Bei p(p − 1)/2 Paaren ist das Maximum bei p ≥ 50 in allen Datensätzen darüber, bei p = 10 in etwa neun von zehn. Bonferroni und die Maximum-Schwelle (Quantil des größten |r| unter Unabhängigkeit) fallen hier zusammen.")
 
 st.markdown("---")
 
@@ -184,7 +184,7 @@ if grid is not None:
     e3_truth = st.selectbox("Wahrheit für das Verdikt", list(C.TRUTHS), format_func=C.TRUTHS.get, index=1, key="e3_truth")
     kind, text = ev.verdict_above(grid["above"], e3_truth)
     getattr(st, kind)(text)
-    st.caption("Die Regel trifft bei Einheit, Faktor und Blöcken. Bei der Kette ist der größte wahre Eigenwert (2,98) klein gegen den Rand, und das Rauschen bläht die Zahl auf.")
+    st.caption("Die Regel trifft bei Einheit und Faktor, bei den Blöcken ab n = 120. Bei der Kette ist der größte wahre Eigenwert (2,98) klein gegen den Rand, und das Rauschen bläht die Zahl auf.")
 
 st.markdown("---")
 
@@ -204,7 +204,7 @@ if grid is not None:
     kind, text = ev.verdict_inverse(grid["err"], 60)
     getattr(st, kind)(text)
     st.caption("Die lineare Schrumpfung zieht zur Einheitsmatrix und hilft deshalb, wo die Wahrheit nahe an der Einheit liegt. Das Abschneiden hält die großen Eigenwerte und mittelt den Rest; "
-               "es hilft bei einem Faktor und schadet bei vielen kleinen Strukturen. Die nichtlineare Schrumpfung kennt weder Ziel noch Struktur und liegt meist nahe am Orakel.")
+               "es hilft bei einem Faktor und schadet bei vielen kleinen Strukturen. Die nichtlineare Schrumpfung kennt weder Ziel noch Struktur und liegt bei Kette und Blöcken nahe am Orakel.")
 
 st.markdown("---")
 

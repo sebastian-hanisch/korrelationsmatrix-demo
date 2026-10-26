@@ -1,6 +1,6 @@
 """Rechnet das Raster der Messreihen vor (E1 bis E5) und schreibt data/matrix_grid.json.
 
-    python tools/make_grid.py            # volles Raster, mehrere Prozesse (rund eine Minute)
+    python tools/make_grid.py            # volles Raster, mehrere Prozesse (mehrere Minuten, rechnerabhängig)
     python tools/make_grid.py --quick    # kleines Probe-Raster für Tests (nicht in data/matrix_grid.json)
 
 Das Raster ist deterministisch (SplitMix64, feste Seeds); tests/test_grid.py rechnet eine feste Probe nach und vergleicht sie mit der Datei."""

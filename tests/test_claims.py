@@ -185,7 +185,7 @@ def test_claim_preset_help_numbers(grid):
     for name, values in expect.items():
         for v in values:
             assert v in C.PRESET_HELP[name], (name, v)
-    assert "Rang 59" in C.PRESET_HELP["Mehr Kennzahlen als Wochen"] and "(Formel: 1 442)" in C.PRESET_HELP["Fast so viele Kennzahlen wie Wochen"]
+    assert "Rang 59" in C.PRESET_HELP["Mehr Kennzahlen als Wochen"] and "(Formel für q = 0,9: 1 442)" in C.PRESET_HELP["Fast so viele Kennzahlen wie Wochen"]
 
 
 def test_claim_readme_mentions_its_key_numbers():
